@@ -140,7 +140,10 @@ if(is_string($schoolOrGrade) && $schoolOrGrade == 'all'){
                 },
                 'contentOptions' => ['nowrap'=>'nowrap']
             ],
-                'user_to_grade_id',
+                [
+                    'attribute' => 'user_id',
+                    'label' => '用户ID',
+                ],
     			[
                     'attribute' =>'user_label',
                     'label'     =>'用户',

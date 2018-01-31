@@ -25,8 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'user_to_school_id',
+            [
+                'attribute' => 'user_id',
+                'label' => '用户ID',
+            ],
             [
                 'attribute' =>'user_label',
                 'label'     => '真实姓名',
