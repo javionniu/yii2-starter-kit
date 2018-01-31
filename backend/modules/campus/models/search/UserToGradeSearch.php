@@ -63,6 +63,9 @@ class UserToGradeSearch extends UserToGrade
             }
             $user_id = ArrayHelper::map($user_id,'id','id');
             $this->load($params);
+            if ($this->user_id) {
+                  $user_id = ArrayHelper::merge($user_id,[$this->user_id]);
+            }
 
             if (!$this->validate()) {
                   // uncomment the following line if you do not want to any records when validation fails

@@ -75,6 +75,7 @@ class UserToSchoolSearch extends UserToSchool
 
         $query->andFilterWhere([
             'user_to_school_id' => $this->user_to_school_id,
+            'user_id' => $this->user_id,
             'school_id' => $this->school_id,
             'user_title_id_at_school' => $this->user_title_id_at_school,
             'status' => $this->status,
