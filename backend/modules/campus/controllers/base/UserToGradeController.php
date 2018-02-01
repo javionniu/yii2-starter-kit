@@ -68,16 +68,7 @@ public function actionIndex()
     $schools[] = $this->schoolCurrent; //Yii::$app->user->identity->schoolsInfo;
     
     $grades =  Yii::$app->user->identity->gradesInfo;
-    foreach ($grades as $key => $value) {
-        $enrollment = '';
-        if ($value['time_of_enrollment']) {
-            $enrollment .= '[';
-            $enrollment .= date('Y',$value['time_of_enrollment']);
-            $enrollment .= ']';
-        }
-        $value['grade_name'] =  $enrollment.$value['grade_name'];
-        $grades[] = $value;
-    }
+
     $grades  = ArrayHelper::map($grades,'grade_id','grade_name');
 
     $schools = ArrayHelper::map($schools,'school_id','school_title');
@@ -88,6 +79,7 @@ public function actionIndex()
      $dataProvider->sort = [
        'defaultOrder'=>[
             'updated_at'=>SORT_DESC,
+            'user_to_grade_id' => SORT_DESC
        ]
     ];
     Tabs::clearLocalStorage();
