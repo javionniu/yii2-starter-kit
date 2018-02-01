@@ -6,6 +6,7 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use backend\modules\campus\models\School;
 use backend\modules\campus\models\Grade;
+use backend\modules\campus\models\UserToGrade;
 use backend\modules\campus\models\GradeCategory;
 
 /*
@@ -189,18 +190,7 @@ $actionColumnTemplates = [];
                 ],
                 //'group_category_id',
     			//'grade_title',
-                [
-                    'attribute' => 'grade_name',
-                    'value' => function($model){
-                        $enrollment = '';
-                        if ($model->time_of_enrollment) {
-                            $enrollment .= '[';
-                            $enrollment .= date('Y',$model->time_of_enrollment);
-                            $enrollment .= ']';
-                        }
-                        return $enrollment.$model->grade_name;
-                    }
-                ],
+                'grade_name',
                /* [
                     'attribute' => 'creater_id',
                     'value'     => function($model){
@@ -238,7 +228,7 @@ $actionColumnTemplates = [];
                     'attribute'=>'grade_user_count',
                     'label'    =>'班级人数',
                     'value'    =>function($model){
-                        return $model->GetUserToGrade()->count();
+                        return $model->GetUserToGrade()->andWhere(['status' => UserToGrade::USER_GRADE_STATUS_NORMAL])->count();
                     }
                 ],
                 'updated_at:datetime',
