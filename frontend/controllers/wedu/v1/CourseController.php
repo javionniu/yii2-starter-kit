@@ -8,6 +8,7 @@ use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use frontend\models\wedu\resources\SignIn;
 use frontend\models\wedu\resources\StudentRecord;
+use frontend\models\wedu\resources\CourseOrderItem;
 use backend\modules\campus\models\UserToGrade;
 use yii\data\Pagination;
 use common\models\UserProfile;
@@ -385,6 +386,7 @@ class CourseController extends \common\rest\Controller
                         'grade',
                         'courseOrder'=>function($model){
                             $model->select(['updated_at','sum(presented_course + total_course ) as total_course']);
+                            $model->andWhere(['status' => CourseOrderItem::STATUS_VALID]);
                         },
                         'user'=>function($model){
                             $model->select(['id','username','phone_number']);
