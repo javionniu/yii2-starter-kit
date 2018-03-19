@@ -51,24 +51,23 @@ class StudentRecordValueController extends \backend\modules\campus\controllers\b
      */
     public function actionCreateValue(){
         $info = [];
-        if($_POST){
-            if($_POST['StudentRecordValue']){
-               $model = new  StudentRecordValue();
-                $info = $model->batchAdd($_POST['StudentRecordValue'],$_GET['student_record_id']);
-                if(empty($info)){
-                //老师要签到多少人
-                $signCount = SignIn::singInCount($_GET['course_id'],true);
-                //检测老师已编辑多少人。
-                $studentRecordCount  = StudentRecord::studentRecouedCount($_GET['course_id'],$_GET['course_schedule_id']);
-                if($signCount == $studentRecordCount){
-                    WorkRecord::updateAll([
-                            'status'=>10
-                        ],'type in (1,4)  and  course_id = '.$_GET['course_id'] .' and course_schedule_id = '.$_GET['course_schedule_id']);
-                }
-                return $this->redirect(['student-record/index']);
-                }
+        if(isset($_POST['StudentRecordValue'])){
+           $model = new  StudentRecordValue();
+            $info = $model->batchAdd($_POST['StudentRecordValue'],$_GET['student_record_id']);
+            if(empty($info)){
+            //老师要签到多少人
+            $signCount = SignIn::singInCount($_GET['course_id'],true);
+            //检测老师已编辑多少人。
+            $studentRecordCount  = StudentRecord::studentRecouedCount($_GET['course_id'],$_GET['course_schedule_id']);
+            if($signCount == $studentRecordCount){
+                WorkRecord::updateAll([
+                        'status'=>10
+                    ],'type in (1,4)  and  course_id = '.$_GET['course_id'] .' and course_schedule_id = '.$_GET['course_schedule_id']);
+            }
+            return $this->redirect(['student-record/index']);
             }
         }
+
         $modelkey = StudentRecordKey::find()->asArray()->all();
         $data = [];
        foreach ($modelkey as $key => $value) {
