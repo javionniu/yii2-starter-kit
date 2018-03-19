@@ -85,9 +85,9 @@ class StudentRecordValueController extends \backend\modules\campus\controllers\b
     public function actionRemove($field_id){
        // var_dump($share_to_file_id);exit;
        if(\Yii::$app->request->isAjax){
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             $model = StudentRecordValueToFile::findOne($field_id);
             if($model){
-                  \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                 if($model->fileStorageItem){
                      $keys = $model->fileStorageItem->file_name;
 
