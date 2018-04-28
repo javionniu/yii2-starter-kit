@@ -11,16 +11,16 @@ require_once(dirname(__FILE__) . '/' . 'igetui/utils/AppConditions.php');
 $a = 2;
 if($a == 1){
     //安卓
-    define('APPKEY','qzf65PXfVb5dSqUUwP8n82');
-    define('APPID','lYFTvqSUBy9TPNZmueZzT9');
-    define('MASTERSECRET','hR9EDXYVshA0Zeo89hSvq4');
+    define('APPKEY','xxxxxx');
+    define('APPID','xxxxxx');
+    define('MASTERSECRET','xxxxxx');
     define('HOST','http://sdk.open.api.igexin.com/apiex.htm');
     //define('DEVICETOKEN','93fcdce941a6ab42cd3f7618733be09e05de5380902932c70475855b58029e86');
     //define('Alias','请输入别名');
 }else{
-    define('APPKEY','hYOy23eiKz9u06uZtORulA');
-    define('APPID','SVYMzezW6HAOOvmGY4k7x1');
-    define('MASTERSECRET','OkQcEOFAgn6ZwU3IwDT6M3');
+    define('APPKEY','xxxxxx');
+    define('APPID','xxxxxx');
+    define('MASTERSECRET','xxxxxx');
     define('HOST','http://sdk.open.api.igexin.com/apiex.htm');
   //  define('CID','9d999e50541561113a6044ef78b2061d');
 }

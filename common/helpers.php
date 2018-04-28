@@ -262,7 +262,6 @@ function substr_auto($string, $length=200, $sign = ' ...', $char='UTF-8'){
 
 /**
  * 亿美软通
- * 账号：wulianweb 密码：WL-web 
  * 平台网址：http://qiyechaxun.emay.cn:8000
  * 6SDK-EMY-6688-JCUML
  * 首页：http://www.emay.cn/  亿美软通
